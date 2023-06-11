@@ -1,7 +1,7 @@
 # UCSD CSE 151B Final Project - Team Start Late Start Rarely
 ## Member(s): Alex Nguyen
 ## How to run inference
-Under the `kaggle_data/` repository is test_public.csv which is the provided raw testing dataset.
+Under the `kaggle_data/` repository is `test_public.csv` which is the provided raw testing dataset.
 
 `encoding.csv` is also included in this repository because the model's label encoder must be fitted to the training dataset.
 
