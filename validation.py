@@ -167,7 +167,7 @@ B_test_dataloader = DataLoader(B_test, batch_size=64, shuffle=False, num_workers
 C_test_dataloader = DataLoader(C_test, batch_size=64, shuffle=False, num_workers=8)
 
 model_A = MyModel(embedding_dim_A).to(device)
-model_A.load_state_dict(torch.load('model_weights/A.pt'))
+model_A.load_state_dict(torch.load('model_weights/A.pt', map_location=torch.device('cpu')))
 model_A.eval()
 create_array = True
 with torch.no_grad(), tqdm(A_test_dataloader, desc=f"A") as progress:
@@ -184,7 +184,7 @@ with torch.no_grad(), tqdm(A_test_dataloader, desc=f"A") as progress:
             score = torch.cat((score, outputs))
 
 model_B = MyModel(embedding_dim_B).to(device)
-model_B.load_state_dict(torch.load('model_weights/B.pt'))
+model_B.load_state_dict(torch.load('model_weights/B.pt', map_location=torch.device('cpu')))
 model_B.eval()
 with torch.no_grad(), tqdm(B_test_dataloader, desc=f"B") as progress:
     for id, inputs in progress:
@@ -195,7 +195,7 @@ with torch.no_grad(), tqdm(B_test_dataloader, desc=f"B") as progress:
         score = torch.cat((score, outputs))
 
 model_C = MyModel(embedding_dim_C).to(device)
-model_C.load_state_dict(torch.load('model_weights/C.pt'))
+model_C.load_state_dict(torch.load('model_weights/C.pt', map_location=torch.device('cpu')))
 model_C.eval()
 with torch.no_grad(), tqdm(C_test_dataloader, desc=f"C") as progress:
     for id, inputs in progress:
